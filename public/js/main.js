@@ -1,18 +1,16 @@
 /**
  * Created by Asus on 3/27/2015.
  */
-require(["io",
+require(["connector",
         "jquery",
         "testmodule"],
-    function(io, $, test){
-        console.log(test);
-        var socket = io();
+    function(connector, $, test){
         $('form').submit(function(){
-            socket.emit('chat message', $('#m').val());
+            connector.send($('#m').val());
             $('#m').val('');
             return false;
         });
-        socket.on('chat message', function(msg){
+        connector.onReceive(function(msg){
             $('#messages').append($('<li>').text(msg));
         });
     }

@@ -5,7 +5,17 @@ define(
     'connector',
     ["io"],
     function(io){
-        debugger;
-        return "hi";
+        var socket = io();
+
+        return {
+            send: function (message) {
+                socket.emit('chat message', message);
+            },
+            onReceive: function () {
+                socket.on('chat message', function(msg){
+                    $('#messages').append($('<li>').text(msg));
+                });
+            }
+        }
     }
 );
