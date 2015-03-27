@@ -7,10 +7,10 @@ requirejs.config({
     }
 });
 
-require(["https://cdn.socket.io/socket.io-1.2.0.js",
+require(["connector",
         "jquery",
         "testmodule"],
-    function(io, $, test){
-        alert("hi");
+    function(connector, $, test){
+debugger;
     }
 );
