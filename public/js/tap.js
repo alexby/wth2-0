@@ -30,18 +30,22 @@ var tap = {
   captureImage:function(){
     var that = this;
     if (that.tapStream) {
+		//сохранение изображения
       that.tapCanvasCtx.translate(that.tapCanvas[0].width, 0);
       that.tapCanvasCtx.scale(-1, 1);
       that.tapCanvasCtx.drawImage(that.tapVideo[0], 0, 0, that.tapVideo[0].width, that.tapVideo[0].height);
       var url = that.tapCanvas[0].toDataURL('image/png');
       scene.addImage(url);
       CURRENT_DATA.url = url;
+	  
+	  sendImage(CURRENT_DATA.moveItCrazyParameters, CURRENT_DATA.url);
       that.tapContainer.remove();
       $('.capture').remove();
       $('.capture_info').remove();
-      $('.save').show();
-      $('.save_info').show();
-      $('.play').show();
+      //$('.save').show();
+      //$('.save_info').show();
+	  $('.crazy_objects_container').remove();
+      //$('.play').show();
       scene.crazyObjectsContainer.crazyObjects("show");
     }
   }

@@ -42,7 +42,7 @@ var scene = {
       onChanged: function(moveItCrazyParameters) {
         CURRENT_DATA.moveItCrazyParameters = moveItCrazyParameters;
         that.extendMoveItCrazyParameters();
-        console.log(JSON.stringify(CURRENT_DATA.moveItCrazyParameters));
+        //console.log(JSON.stringify(CURRENT_DATA.moveItCrazyParameters));
       }
     });
 
@@ -77,7 +77,7 @@ var scene = {
 
   updateParams:function(v){
     var that = this;
-    CURRENT_DATA.moveItCrazyParameters = v.moveItCrazyParameters;
+    CURRENT_DATA.moveItCrazyParameters = v;
     that.extendMoveItCrazyParameters();
   },
 
