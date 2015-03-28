@@ -1,4 +1,6 @@
-var speechConvert = function($) {
+var speechConvertor = function() {
+    var start_btn = $("#start_btn");
+    var stop_btn = $("#stop_btn");
 	var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
             var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
             return v.toString(16);
@@ -9,7 +11,9 @@ var speechConvert = function($) {
     var tts = new webspeechkit.Tts({key: key, emotion: 'evil', speaker: 'jane'});
     var dict = new webspeechkit.Dictation("wss://webasr.yandex.net/asrsocket.ws", uuid, key);
 
-    start_btn.onclick = function() {
+    console.log("CLICK000!");
+    start_btn.click (function() {
+        console.log("CLICK!");
         var format = webspeechkit.FORMAT["PCM44"];
 
         $('#content_uttr').html('');
@@ -40,20 +44,20 @@ var speechConvert = function($) {
                 $('#pack').html('Speech ended!');
             }
         });
-    }
+    })
 
-    pause_btn.onclick = dict.pause.bind(dict);
+   // pause_btn.onclick = dict.pause.bind(dict);
     stop_btn.onclick = dict.stop.bind(dict);
     
-    tts_say.onclick = function() {
-        dict.pause();
-        var text = $('#content_uttr').text() + $('#content_curr').text();
-        tts.say(text, start_btn.onclick, {emotion: 'good', speaker: 'jane'});
-    };
+    // tts_say.onclick = function() {
+    //     dict.pause();
+    //     var text = $('#content_uttr').text() + $('#content_curr').text();
+    //     tts.say(text, start_btn.onclick, {emotion: 'good', speaker: 'jane'});
+    // };
     return{enable:function(callBack){
         console.log("Enable");
 
     }, disable:function(){
         console.log("Disable");
     }};
-}();
+};

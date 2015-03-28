@@ -15,7 +15,8 @@ var app = function(){
                 $('#messages').append($('<li>').text(msg));
             });
 	    }, initSpeechConvertor:function(){
-            speechConvertor.enable();
+            var speechConv = speechConvertor();
+            speechConv.enable();
         }};
 }()
 
