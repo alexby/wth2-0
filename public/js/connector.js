@@ -13,18 +13,20 @@ var connection =  function(){
                callback(msg);
             });
         },
-        sendImage:  function(buf) {
-            socket.emit('image', { image: true, buffer: buf.toString('base64') });
+        sendImage:  function(base64url, points) {
+            debugger;
+            socket.emit('image', { image: true, url: base64url, points: points});
         },
         onImageReceived: function(callBack) {
-            var ctx = document.getElementById('canvas').getContext('2d');
+            //var ctx = document.getElementById('canvas').getContext('2d');
             socket.on("image", function(info) {
                 if (info.image) {
-                    var img = new Image();
-                    img.src = 'data:image/jpeg;base64,' + info.buffer;
-                    ctx.drawImage(img, 0, 0);
+                    callBack && callBack({
+                        url: info.url,
+                        userId: info.userId,
+                        moveItCrazy: JSON.parse(info.points)
+                    });
                 }
-                callBack && callBack();
             });
         }
     }

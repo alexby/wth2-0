@@ -24,6 +24,7 @@ io.on('connection', function(socket){
 
   socket.on("image", function(msg){
     console.log(msg);
+    msg.userId = userId;
     io.emit("image", msg);
   })
 });

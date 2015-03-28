@@ -1,11 +1,13 @@
 /**
  * Created by Asus on 3/27/2015.
  */
-    
+var connector,
+	usersImages = {};
+
 var app = function(){
 	return {
         init:function() {
-            var connector = connection();
+            connector = connection();
             $('form').submit(function(){
                 connector.send($('#m').val());
                 $('#m').val('');
@@ -14,6 +16,9 @@ var app = function(){
             connector.onReceive(function(msg){
                 $('#messages').append($('<li>').text( msg.userId + "said: " + " " + msg.msg));
             });
+			connector.onImageReceived(function(imageData) {
+				usersImages[imageData.userId] = imageData;
+			});
 	    }, initSpeechConvertor:function(){
             var speechConv = speechConvertor();
             speechConv.enable();
@@ -25,6 +30,7 @@ var sendImage = function(moveItCrazy, url){
 	//send url, moveItCrazy
 	console.log(moveItCrazy);
 	console.log(url);
+	connector.sendImage(url, moveItCrazy);
 };
 
 var setImage = function(){
@@ -34,6 +40,7 @@ var setImage = function(){
 	console.log(moveItCrazy);
 	scene.addImage(url);
 	scene.updateParams(JSON.parse(moveItCrazy));
+	connector.sendImage(url, moveItCrazy);
 };
 
 var playAudioAndVideo = function() {
