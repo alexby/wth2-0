@@ -3,7 +3,12 @@
  */
 var connection =  function(){
     var socket = io(),
+        id = localStorage.getItem("wth-chat-user-id");
+
+    if (!id) {
         id = Date.now();
+        localStorage.setItem("wth-chat-user-id", id);
+    }
 
     return {
         send: function (message) {

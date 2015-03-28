@@ -4,10 +4,19 @@
 var connector,
 	usersImages = {},
 	speacker,
-	translator;
+	translator,
+	imageStorage = function(storage) {
+		return {
+			getImage: function(userId) {
+				return JSON.parse(storage.getItem(userId));
+			},
+			saveImage: function (imageData) {
+				debugger;
+				storage.setItem(imageData.userId, JSON.stringify(imageData));
+			}
+		}
+	}(localStorage);
 
-var start_btn = $("#start_btn");
-var stop_btn = $("#stop_btn");
 var sendMessage = function(msg) {
     connector&&connector.send(msg);
 };
@@ -28,14 +37,15 @@ var app = function(){
             });
             connector.onReceive(function(msg){
                 $('#messages').append($('<li>').text( (msg.isMy? "I" : msg.userId) + " said: " + " " + msg.msg));
-				if (usersImages[msg.userId]) {
-					setImage(false, usersImages[msg.userId].url, usersImages[msg.userId].moveItCrazy);
-				}
 				if (!msg.isMy) {
 					translator.tr(msg.msg, function(text) {
 						speacker.load(text, function () {
-							$('#messages').append($('<li>').text("Translated: " + " " + text));
 							var analyser = speacker.getAnalyzer();
+							var image = imageStorage.getImage(msg.userId);
+							$('#messages').append($('<li>').text("Translated: " + " " + text));
+							if (image) {
+								setImage(false, image.url, image.moveItCrazy);
+							}
 							core.setAnalyser(analyser);
 							core.updateSpectrum();
 						});
@@ -44,7 +54,8 @@ var app = function(){
 				messagesArea.scrollTop = messagesArea.scrollHeight;
 			});
 			connector.onImageReceived(function(imageData) {
-				usersImages[imageData.userId] = imageData;
+				//usersImages[imageData.userId] = imageData;
+				imageStorage.saveImage(imageData);
 			});
 	    },
 		initTranslation: function () {

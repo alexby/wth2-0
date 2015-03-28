@@ -50,7 +50,7 @@ var core = {
     });
 
     scene.init(this.scene);
-    player.init(this.scene);
+   // player.init(this.scene);
 
     if(!CURRENT_DATA.url){
       tap.init(this.scene);
