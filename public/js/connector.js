@@ -8,9 +8,9 @@ var connection =  function(){
         send: function (message) {
             socket.emit('chat message', message);
         },
-        onReceive: function () {
+        onReceive: function (callback) {
             socket.on('chat message', function(msg){
-                $('#messages').append($('<li>').text(msg));
+               callback(msg);
             });
         },
         sendImage:  function(buf) {

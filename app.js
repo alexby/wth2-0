@@ -15,9 +15,13 @@ app.get('/:id', function(req, res){
 });
 
 io.on('connection', function(socket){
+  var userId = (socket.id).toString().substr(0, 5);
+
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+    console.log(msg, userId);
+    io.emit('chat message', {msg: msg, userId: userId});
   });
+
   socket.on("image", function(msg){
     console.log(msg);
     io.emit("image", msg);
