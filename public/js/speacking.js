@@ -9,6 +9,9 @@ var speacking = function() {
     var context;
     var analyser;
 
+    context = new AudioContext();
+    analyser = context.createAnalyser();
+
     return {
         play: function() {
             audio.play();
@@ -18,9 +21,6 @@ var speacking = function() {
             audio = new Audio(request);
             audio.autoplay = true;
             document.body.appendChild(audio);
-
-            context = new AudioContext();
-            analyser = context.createAnalyser();
 
             audio.addEventListener('canplaythrough', function() {
                 var source = context.createMediaElementSource(audio);

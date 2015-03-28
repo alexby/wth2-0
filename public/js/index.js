@@ -154,7 +154,6 @@ var core = {
       clearDataCanvases();
       if ( that.analyser ) {
         window.requestAnimationFrame(core.updateSpectrum);
-        console.log("drawing");
         var soundSpectrum = calcSpectrum( that.analyser ,1);
         var voiceSpectrum = calcSpectrum( that.analyser ,0);
         scene.update(voiceSpectrum,soundSpectrum);
@@ -163,7 +162,6 @@ var core = {
   },
   analyser: null,
   setAnalyser: function(analyser) {
-    console.log("set analyser");
     this.analyser = analyser;
   }
 };
@@ -172,8 +170,6 @@ window.onload = function() {
   var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
   $('body').addClass(!is_chrome?'nochrome':'');
   core.init();
-
-
 };
 
 
