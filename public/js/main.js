@@ -1,11 +1,8 @@
 /**
  * Created by Asus on 3/27/2015.
  */
-require(["io",
-        "jquery",
-        "testmodule"],
-    function(io, $, test){
-        console.log(test);
+var app = function(){
+	return {init:function() {
         var socket = io();
         $('form').submit(function(){
             socket.emit('chat message', $('#m').val());
@@ -15,5 +12,7 @@ require(["io",
         socket.on('chat message', function(msg){
             $('#messages').append($('<li>').text(msg));
         });
-    }
-);
+	}}
+	
+}()
+
