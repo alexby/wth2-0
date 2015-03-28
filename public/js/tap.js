@@ -11,7 +11,7 @@ var tap = {
     // standards ... shit
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     window.URL.createObjectURL = window.URL.createObjectURL || window.URL.webkitCreateObjectURL || window.URL.mozCreateObjectURL || window.URL.msCreateObjectURL;
-    $('<div>').addClass('allow large blue button').appendTo('body article').html('<span class="icon_arrow_up"></span><span class="icon_arrow_up"></span><span class="icon_arrow_up"></span>&nbsp;&nbsp;&nbsp;Hey, allow us to use your camera ;)&nbsp;&nbsp;&nbsp;<span class="icon_arrow_up"></span><span class="icon_arrow_up"></span><span class="icon_arrow_up"></span>');
+    $('<div>').addClass('allow large blue button headMessage').insertBefore('#before_images').html('<span class="icon_arrow_up"></span><span class="icon_arrow_up"></span><span class="icon_arrow_up"></span>&nbsp;&nbsp;&nbsp;Hey, allow us to use your camera ;)&nbsp;&nbsp;&nbsp;<span class="icon_arrow_up"></span><span class="icon_arrow_up"></span><span class="icon_arrow_up"></span>');
     navigator.getUserMedia({video: true}, function(stream) {
       that.tapVideo[0].src = window.URL.createObjectURL(stream);
       $('.allow').hide();
@@ -39,14 +39,22 @@ var tap = {
       CURRENT_DATA.url = url;
 	  
 	  sendImage(CURRENT_DATA.moveItCrazyParameters, CURRENT_DATA.url);
-      that.tapContainer.remove();
-      $('.capture').remove();
-      $('.capture_info').remove();
-      //$('.save').show();
-      //$('.save_info').show();
-	  $('.crazy_objects_container').remove();
-      //$('.play').show();
-      scene.crazyObjectsContainer.crazyObjects("show");
+	  saveOwnPhoto(CURRENT_DATA);
+	  this.hide();
     }
+  },
+  
+  load:function() {
+      this.tapContainer.show();
+      $('.capture').show();
+      $('.capture_info').show();
+	  $('.crazy_objects_container').show();
+  },
+  
+  hide:function() {
+      this.tapContainer.hide();
+      $('.capture').hide();
+      $('.capture_info').hide();
+	  $('.crazy_objects_container').hide();	  
   }
 };

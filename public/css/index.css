@@ -315,6 +315,11 @@ aside.hidden .gear{
   margin: 20px;
 }
 
+.headMessage {
+	width: 100%;
+	position: absolute;
+}
+
 .allow_info, .save_info{
   top: 0;
   position: absolute;
