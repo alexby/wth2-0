@@ -12,8 +12,11 @@ var app = function(){
             connector = connection();
 			speacker = speacking();
 			translator = translating();
+			var sendMessage = function(msg) {
+				connector.send(msg);
+			};
             $('form').submit(function(){
-                connector.send($('#m').val());
+				sendMessage($('#m').val());
                 $('#m').val('');
                 return false;
             });
