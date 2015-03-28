@@ -11,6 +11,7 @@ var app = function(){
         init:function() {
             connector = connection();
 			speacker = speacking();
+			translator = translating();
             $('form').submit(function(){
                 connector.send($('#m').val());
                 $('#m').val('');
@@ -22,9 +23,12 @@ var app = function(){
 					setImage(false, usersImages[msg.userId].url, usersImages[msg.userId].moveItCrazy);
 				}
 				if (!msg.isMy) {
-					speacker.load(msg.msg, function () {
-						speacker.play();
-					});
+					translator.tr(msg.msg, function(text) {
+						speacker.load(text, function () {
+							$('#messages').append($('<li>').text("Translated: " + " " + text));
+							speacker.play();
+						});
+					})
 				}
 			});
 			connector.onImageReceived(function(imageData) {
