@@ -19,12 +19,11 @@ io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
     console.log(msg, userId);
-    io.emit('chat message', {msg: msg, userId: userId});
+    io.emit('chat message', msg);
   });
 
   socket.on("image", function(msg){
-    console.log(msg);
-    msg.userId = userId;
+    console.log(userId, msg.url.substr(22, 5));
     io.emit("image", msg);
   })
 });

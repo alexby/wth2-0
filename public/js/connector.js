@@ -2,19 +2,25 @@
  * Created by Asus on 3/27/2015.
  */
 var connection =  function(){
-    var socket = io();
+    var socket = io(),
+        id = Date.now();
 
     return {
         send: function (message) {
-            socket.emit('chat message', message);
+            var msg = {
+                userId: id,
+                msg: message
+            };
+            socket.emit('chat message', msg);
         },
         onReceive: function (callback) {
             socket.on('chat message', function(msg){
+               msg.isMy = (msg.userId === id);
                callback(msg);
             });
         },
         sendImage:  function(base64url, points) {
-            socket.emit('image', { image: true, url: base64url, points: points});
+            socket.emit('image', { image: true, url: base64url, points: points, userId: id});
         },
         onImageReceived: function(callBack) {
             //var ctx = document.getElementById('canvas').getContext('2d');
