@@ -15,6 +15,7 @@ var speechConvertor = function() {
     start_btn.click (function() {
         console.log("CLICK!");
         var format = webspeechkit.FORMAT["PCM44"];
+        console.log(format);
 
         $('#content_uttr').html('');
         $('#content_curr').html('');
@@ -35,7 +36,7 @@ var speechConvertor = function() {
                 $('#packages_send').html(info.send_packages);
                 $('#processed').html(info.processed);
             },
-            punctuation: punctuation.checked,
+            punctuation: true,
             vad: true,
             speechStart: function() {
                 $('#pack').html('Speech started!');
@@ -44,10 +45,13 @@ var speechConvertor = function() {
                 $('#pack').html('Speech ended!');
             }
         });
-    })
+    });
 
    // pause_btn.onclick = dict.pause.bind(dict);
-    stop_btn.onclick = dict.stop.bind(dict);
+    stop_btn.click(function() {
+        console.log("stop");
+        dict.stop.bind(dict);
+    }); 
     
     // tts_say.onclick = function() {
     //     dict.pause();
