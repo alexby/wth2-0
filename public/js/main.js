@@ -14,7 +14,7 @@ var app = function(){
                 return false;
             });
             connector.onReceive(function(msg){
-                $('#messages').append($('<li>').text( msg.isMy? "I" : msg.userId + " said: " + " " + msg.msg));
+                $('#messages').append($('<li>').text( (msg.isMy? "I" : msg.userId) + " said: " + " " + msg.msg));
 				if (usersImages[msg.userId]) {
 					setImage(false, usersImages[msg.userId].url, usersImages[msg.userId].moveItCrazy);
 				}
