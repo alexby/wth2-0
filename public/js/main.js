@@ -2,12 +2,14 @@
  * Created by Asus on 3/27/2015.
  */
 var connector,
-	usersImages = {};
+	usersImages = {},
+	speacker;
 
 var app = function(){
 	return {
         init:function() {
             connector = connection();
+			speacker = speacking();
             $('form').submit(function(){
                 connector.send($('#m').val());
                 $('#m').val('');
@@ -17,6 +19,11 @@ var app = function(){
                 $('#messages').append($('<li>').text( (msg.isMy? "I" : msg.userId) + " said: " + " " + msg.msg));
 				if (usersImages[msg.userId]) {
 					setImage(false, usersImages[msg.userId].url, usersImages[msg.userId].moveItCrazy);
+				}
+				if (!msg.isMy) {
+					speacker.load(msg.msg, function () {
+						speacker.play();
+					});
 				}
 			});
 			connector.onImageReceived(function(imageData) {
