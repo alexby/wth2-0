@@ -15,7 +15,13 @@ var app = function(){
             });
             connector.onReceive(function(msg){
                 $('#messages').append($('<li>').text( msg.userId + "said: " + " " + msg.msg));
-            });
+				if (usersImages[msg.userId]) {
+					var ctx = document.getElementById('canvas').getContext('2d');
+					var img = new Image();
+					img.src = usersImages[msg.userId].url;
+					ctx.drawImage(img, 0, 0);
+				}
+			});
 			connector.onImageReceived(function(imageData) {
 				usersImages[imageData.userId] = imageData;
 			});
