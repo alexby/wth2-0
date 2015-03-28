@@ -35,6 +35,7 @@ var tap = {
       that.tapCanvasCtx.scale(-1, 1);
       that.tapCanvasCtx.drawImage(that.tapVideo[0], 0, 0, that.tapVideo[0].width, that.tapVideo[0].height);
       var url = that.tapCanvas[0].toDataURL('image/png');
+	  that.tapCanvasCtx.scale(-1, 1);
       scene.addImage(url);
       CURRENT_DATA.url = url;
 	  
@@ -42,6 +43,7 @@ var tap = {
 	  saveOwnPhoto(CURRENT_DATA);
 	  this.hide();
     }
+	appendOwnImages();
   },
   
   load:function() {
