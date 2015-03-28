@@ -18,5 +18,21 @@ var smile = function() {
 		load: function(text, onLoadCallback) {
 
 		}
+
+		// $('#say').click(function () {
+		// 	generateSpeach($('#text').val());
+		// 	var request = apiAddress + "text=" + text + "&format=wav&lang=ru%E2%80%91RU&speaker=zahar&key=" + yandexApiKey;
+		// 	$.ajax({
+		// 		url: request,
+		// 		}).done(function(data) {
+		// 			console.log(data)
+		// 				var audio = new Audio(data);
+
+		// 				audio.oncanplaythrough = function(){
+		// 				audio.play();
+		// 				}
+		// 		});
+
+		// });
 	}
 }();
