@@ -11,7 +11,6 @@ var connector,
 				return JSON.parse(storage.getItem(userId));
 			},
 			saveImage: function (imageData) {
-				debugger;
 				storage.setItem(imageData.userId, JSON.stringify(imageData));
 			}
 		}
