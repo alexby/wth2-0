@@ -18,6 +18,10 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
+  socket.on("image", function(msg){
+    console.log(msg);
+    io.emit("image", msg);
+  })
 });
 
 http.listen(3000, function(){
