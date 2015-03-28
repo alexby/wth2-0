@@ -23,8 +23,13 @@ var app = function(){
 	return {
         init:function() {
 			messagesArea = document.getElementById("messages");
-			
+
             connector = connection();
+			var img = imageStorage.getImage(connector.getUserId());
+			if (img) {
+				connector.sendImage(img.url, img.crazyObjects);
+			}
+
 			speacker = speacking();
 			translator = translating();
 			

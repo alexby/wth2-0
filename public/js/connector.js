@@ -11,6 +11,9 @@ var connection =  function(){
     }
 
     return {
+        getUserId: function(){
+            return id;
+        },
         send: function (message) {
             var msg = {
                 userId: id,
