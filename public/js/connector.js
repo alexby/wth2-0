@@ -8,7 +8,7 @@ var connection =  function(){
     if (!id) {
         id = Date.now();
         localStorage.setItem("wth-chat-user-id", id);
-    } 
+    }
 
     return {
         send: function (message) {
