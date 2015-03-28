@@ -39,10 +39,8 @@ var tap = {
       CURRENT_DATA.url = url;
 	  
 	  sendImage(CURRENT_DATA.moveItCrazyParameters, CURRENT_DATA.url);
-      that.tapContainer.hide();
-      $('.capture').hide();
-      $('.capture_info').hide();
-	  $('.crazy_objects_container').hide();
+	  saveOwnPhoto(CURRENT_DATA);
+	  this.hide();
     }
   },
   
@@ -51,5 +49,12 @@ var tap = {
       $('.capture').show();
       $('.capture_info').show();
 	  $('.crazy_objects_container').show();
+  },
+  
+  hide:function() {
+      this.tapContainer.hide();
+      $('.capture').hide();
+      $('.capture_info').hide();
+	  $('.crazy_objects_container').hide();	  
   }
 };
