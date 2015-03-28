@@ -15,6 +15,8 @@ var sendMessage = function(msg) {
 var app = function(){
 	return {
         init:function() {
+			messagesArea = document.getElementById("messages");
+			
             connector = connection();
 			speacker = speacking();
 			translator = translating();
@@ -39,6 +41,7 @@ var app = function(){
 						});
 					})
 				}
+				messagesArea.scrollTop = messagesArea.scrollHeight;
 			});
 			connector.onImageReceived(function(imageData) {
 				usersImages[imageData.userId] = imageData;
@@ -81,8 +84,3 @@ var setImage = function(needToSend, url, moveItCrazy){
 	needToSend && connector.sendImage(url, moveItCrazy);
 };
 
-var playAudioAndVideo = function() {
-	console.log(player);
-	player.HTML5MultiAudioPlayer.Play();
-	core.updateSpectrum();
-};
