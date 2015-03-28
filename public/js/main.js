@@ -84,3 +84,6 @@ var setImage = function(needToSend, url, moveItCrazy){
 	needToSend && connector.sendImage(url, moveItCrazy);
 };
 
+var makePhoto = function() {
+	tap.load();
+}
