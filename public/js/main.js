@@ -3,7 +3,8 @@
  */
 var connector,
 	usersImages = {},
-	speacker;
+	speacker,
+	translator;
 
 var app = function(){
 	return {
@@ -29,10 +30,23 @@ var app = function(){
 			connector.onImageReceived(function(imageData) {
 				usersImages[imageData.userId] = imageData;
 			});
-	    }, initSpeechConvertor:function(){
+	    },
+		initSpeechConvertor:function (){
             var speechConv = speechConvertor();
             speechConv.enable();
-        }};
+        },
+		initTranslation: function () {
+			translator = translating();
+			$('form').submit(function(){
+				console.log($('#m').val());
+				translator.tr($('#m').val(), function(resText) {
+					$('#messages').append($('<li>').text(resText));
+				});
+				$('#m').val('');
+				return false;
+			});
+		}
+	}
 }();
 
 var sendImage = function(moveItCrazy, url){
