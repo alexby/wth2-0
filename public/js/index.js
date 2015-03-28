@@ -150,7 +150,6 @@ var core = {
       }
     }
 
-
     that.updateSpectrum = function (time) {
       clearDataCanvases();
       if ( that.analyser ) {

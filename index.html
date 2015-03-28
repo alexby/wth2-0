@@ -40,10 +40,13 @@
 	<script src="js/index.js"></script>
     <script src="js/speacking.js"></script>
     <script src="js/translating.js"></script>
-		
+	<script src="js/webspeechkit.min.js"></script>
+	<script src="js/tania.js"></script>
+
     <script>
 	$(document).ready(function() {
 		app.init();
+		app.initSpeechConvertor();
 	})
 	</script>
   </head>
@@ -57,6 +60,8 @@
 		</div>
 		<input type="button" onclick="setImage(true);return false;" value="setImage" />
 		<input type="button" onclick="playAudioAndVideo();return false;" value="play" />
+		<input type="button" id="start_btn" value="Start"/>
+	    <input type="button" id="stop_btn" value="Stop"/>
 
     <div style="width: 300px;">
     <ul id="messages"></ul>

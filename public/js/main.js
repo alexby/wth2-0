@@ -6,15 +6,19 @@ var connector,
 	speacker,
 	translator;
 
+var start_btn = $("#start_btn");
+var stop_btn = $("#stop_btn");
+var sendMessage = function(msg) {
+    connector&&connector.send(msg);
+};
+
 var app = function(){
 	return {
         init:function() {
             connector = connection();
 			speacker = speacking();
 			translator = translating();
-			var sendMessage = function(msg) {
-				connector.send(msg);
-			};
+			
             $('form').submit(function(){
 				sendMessage($('#m').val());
                 $('#m').val('');
@@ -40,10 +44,6 @@ var app = function(){
 				usersImages[imageData.userId] = imageData;
 			});
 	    },
-		initSpeechConvertor:function (){
-            var speechConv = speechConvertor();
-            speechConv.enable();
-        },
 		initTranslation: function () {
 			translator = translating();
 			$('form').submit(function(){
@@ -54,13 +54,18 @@ var app = function(){
 				$('#m').val('');
 				return false;
 			});
-		}
-	}
+	    },
+         initSpeechConvertor:function(){
+            var speechConv = speechConvertor();
+            $("#start_btn").on("click", function() {speechConv.enable(function(text){
+                sendMessage(text);
+            });});
+            $("#stop_btn").on("click", function() {speechConv.disable();});
+        }};
 }();
 
 var sendImage = function(moveItCrazy, url){
 	moveItCrazy = JSON.stringify(moveItCrazy);
-	//send url, moveItCrazy
 	console.log(moveItCrazy);
 	console.log(url);
 	connector.sendImage(url, moveItCrazy);
