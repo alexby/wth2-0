@@ -14,7 +14,6 @@ var connection =  function(){
             });
         },
         sendImage:  function(base64url, points) {
-            debugger;
             socket.emit('image', { image: true, url: base64url, points: points});
         },
         onImageReceived: function(callBack) {
@@ -24,7 +23,7 @@ var connection =  function(){
                     callBack && callBack({
                         url: info.url,
                         userId: info.userId,
-                        moveItCrazy: JSON.parse(info.points)
+                        moveItCrazy: info.points
                     });
                 }
             });
