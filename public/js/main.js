@@ -2,7 +2,6 @@
  * Created by Asus on 3/27/2015.
  */
 var connector,
-	usersImages = {},
 	speacker,
 	translator,
 	imageStorage = function(storage) {

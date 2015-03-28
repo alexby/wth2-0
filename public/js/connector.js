@@ -8,7 +8,7 @@ var connection =  function(){
     if (!id) {
         id = Date.now();
         localStorage.setItem("wth-chat-user-id", id);
-    }
+    } 
 
     return {
         send: function (message) {
@@ -28,7 +28,6 @@ var connection =  function(){
             socket.emit('image', { image: true, url: base64url, points: points, userId: id});
         },
         onImageReceived: function(callBack) {
-            //var ctx = document.getElementById('canvas').getContext('2d');
             socket.on("image", function(info) {
                 if (info.image) {
                     callBack && callBack({
