@@ -15,6 +15,8 @@ var app = function(){
             connector.onReceive(function(msg){
                 $('#messages').append($('<li>').text(msg));
             });
-	    }};
+	    }, initSpeechConvertor:function(){
+            speechConvertor.enable();
+        }};
 }()
 
