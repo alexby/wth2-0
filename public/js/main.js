@@ -29,7 +29,9 @@ var app = function(){
 					translator.tr(msg.msg, function(text) {
 						speacker.load(text, function () {
 							$('#messages').append($('<li>').text("Translated: " + " " + text));
-							speacker.play();
+							var analyser = speacker.getAnalyzer();
+							core.setAnalyser(analyser);
+							core.updateSpectrum();
 						});
 					})
 				}

@@ -151,18 +151,21 @@ var core = {
     }
 
 
-    that.updateSpectrum = function(time) {
-      window.webkitRequestAnimationFrame(core.updateSpectrum);
+    that.updateSpectrum = function (time) {
       clearDataCanvases();
-
-      var soundSpectrum = calcSpectrum(player.channels[1].audioAnalyser,1);
-      drawSpectrum(soundSpectrum, '#aaaaaa');
-
-      var voiceSpectrum = calcSpectrum(player.channels[0].audioAnalyser,0);
-      drawSpectrum(voiceSpectrum, '#ffffff');
-
-      scene.update(voiceSpectrum,soundSpectrum);
+      if ( that.analyser ) {
+        window.requestAnimationFrame(core.updateSpectrum);
+        console.log("drawing");
+        var soundSpectrum = calcSpectrum( that.analyser ,1);
+        var voiceSpectrum = calcSpectrum( that.analyser ,0);
+        scene.update(voiceSpectrum,soundSpectrum);
+      }
     };
+  },
+  analyser: null,
+  setAnalyser: function(analyser) {
+    console.log("set analyser");
+    this.analyser = analyser;
   }
 };
 
