@@ -1,12 +1,11 @@
 /**
  * Created by Asus on 3/27/2015.
  */
-
-var connector;
-
+    
 var app = function(){
 	return {
         init:function() {
+            var connector = connection();
             $('form').submit(function(){
                 connector.send($('#m').val());
                 $('#m').val('');

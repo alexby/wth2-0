@@ -1,7 +1,7 @@
 /**
  * Created by Asus on 3/27/2015.
  */
-var connector =  function(){
+var connection =  function(){
     var socket = io();
 
     return {
@@ -28,4 +28,4 @@ var connector =  function(){
             });
         }
     }
-}();
+};
