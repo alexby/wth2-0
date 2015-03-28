@@ -3,10 +3,12 @@
  */
 var connector,
 	usersImages = {};
-
+	
 var app = function(){
 	return {
         init:function() {
+			messagesArea = document.getElementById("messages");
+			
             connector = connection();
             $('form').submit(function(){
                 connector.send($('#m').val());
@@ -18,6 +20,7 @@ var app = function(){
 				if (usersImages[msg.userId]) {
 					setImage(false, usersImages[msg.userId].url, usersImages[msg.userId].moveItCrazy);
 				}
+				messagesArea.scrollTop = messagesArea.scrollHeight;
 			});
 			connector.onImageReceived(function(imageData) {
 				usersImages[imageData.userId] = imageData;
@@ -46,8 +49,3 @@ var setImage = function(needToSend, url, moveItCrazy){
 	needToSend && connector.sendImage(url, moveItCrazy);
 };
 
-var playAudioAndVideo = function() {
-	console.log(player);
-	player.HTML5MultiAudioPlayer.Play();
-	core.updateSpectrum();
-};
