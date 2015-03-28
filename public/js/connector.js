@@ -1,31 +1,38 @@
 /**
  * Created by Asus on 3/27/2015.
  */
-var connector =  function(){
-    var socket = io();
+var connection =  function(){
+    var socket = io(),
+        id = Date.now();
 
     return {
         send: function (message) {
-            socket.emit('chat message', message);
+            var msg = {
+                userId: id,
+                msg: message
+            };
+            socket.emit('chat message', msg);
         },
-        onReceive: function () {
+        onReceive: function (callback) {
             socket.on('chat message', function(msg){
-                $('#messages').append($('<li>').text(msg));
+               msg.isMy = (msg.userId === id);
+               callback(msg);
             });
         },
-        sendImage:  function(buf) {
-            socket.emit('image', { image: true, buffer: buf.toString('base64') });
+        sendImage:  function(base64url, points) {
+            socket.emit('image', { image: true, url: base64url, points: points, userId: id});
         },
         onImageReceived: function(callBack) {
-            var ctx = document.getElementById('canvas').getContext('2d');
+            //var ctx = document.getElementById('canvas').getContext('2d');
             socket.on("image", function(info) {
                 if (info.image) {
-                    var img = new Image();
-                    img.src = 'data:image/jpeg;base64,' + info.buffer;
-                    ctx.drawImage(img, 0, 0);
+                    callBack && callBack({
+                        url: info.url,
+                        userId: info.userId,
+                        moveItCrazy: info.points
+                    });
                 }
-                callBack && callBack();
             });
         }
     }
-}();
+};

@@ -15,11 +15,15 @@ app.get('/:id', function(req, res){
 });
 
 io.on('connection', function(socket){
+  var userId = (socket.id).toString().substr(0, 5);
+
   socket.on('chat message', function(msg){
+    console.log(msg, userId);
     io.emit('chat message', msg);
   });
+
   socket.on("image", function(msg){
-    console.log(msg);
+    console.log(userId, msg.url.substr(22, 5));
     io.emit("image", msg);
   })
 });

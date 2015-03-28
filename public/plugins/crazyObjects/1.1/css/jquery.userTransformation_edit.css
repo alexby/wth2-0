@@ -1,0 +1,454 @@
+
+.userTransform {
+  /*z-index: 20;*/
+  border: 4px solid transparent;
+  box-shadow: none;
+  cursor: default;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.userTransform > * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.userTransform.userTransform_edit {
+  border: 4px solid rgba(255,100,0,0.1);
+  box-shadow: 0 0 0 1px rgba(255,100,0,0.3);
+  cursor: url(http://d3ivn4i0pje4wg.cloudfront.net/assets/cursors/openhand-34aecee1db450dfe016944444707f790.cur), move;
+}
+
+.userTransform.userTransform_edit:hover{
+  border: 4px solid rgba(255,100,0,0.2);
+  box-shadow:0 0 0 1px rgba(255,100,0,0.6);
+}
+
+.userTransform.userTransform_edit:active{
+  border: 4px solid rgba(255,100,0,0.2);
+  box-shadow:0 0 0 1px rgba(255,100,0,0.6);
+}
+
+.userTransform > .content {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.userTransform.userTransform_edit > .rotate,
+.userTransform.userTransform_edit > .remove,
+.userTransform.userTransform_edit > .resize {
+  display: block;
+}
+
+/********************************************************************************
+ * design 1
+ ********************************************************************************/
+
+.userTransform > .rotate {
+  position: absolute;
+  display: none;
+  right: -18px;
+  bottom: -18px;
+  width: 35px;
+  height: 35px;
+  background-image: url(../images/rotate.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  z-index: 10000;
+}
+
+.userTransform > .resize {
+  position: absolute;
+  display: none;
+  right: -18px;
+  bottom: -18px;
+  width: 35px;
+  height: 35px;
+  background-image: url(../images/rotate.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  z-index: 10000;
+}
+
+.userTransform > .remove {
+  position: absolute;
+  display: none;
+  left: -16px;
+  top: -16px;
+  width: 28px;
+  height: 29px;
+  background-image: url(../images/close.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/********************************************************************************
+ * design 2
+ ********************************************************************************/
+
+.userTransform.utdesign2 > .rotate {
+  right: -11px;
+  bottom: -11px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.75);
+  background-image: url(http://d3ivn4i0pje4wg.cloudfront.net/assets/buttons_toolbar-9182721ec6f72405c64acfe9b67780d3.png);
+  background-position: -16px -4211px;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  -ms-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  -o-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.userTransform.utdesign2 > .remove {
+  left: auto;
+  right: -11px;
+  top: -11px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.75);
+  background-image: url(http://d3ivn4i0pje4wg.cloudfront.net/assets/buttons_toolbar-9182721ec6f72405c64acfe9b67780d3.png);
+  background-position: -17px -3651px;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  -ms-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  -o-box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+/********************************************************************************
+ * design 3
+ ********************************************************************************/
+
+.userTransform.utdesign3 > .rotate {
+  right: -23px;
+  bottom: -21px;
+  width: 42px;
+  height: 39px;
+  background-image: url(../images/rotate_3.png);
+}
+
+.userTransform.utdesign3 > .remove {
+  left: -21px;
+  top: -19px;
+  width: 42px;
+  height: 39px;
+  background-image: url(../images/close_3.png);
+  cursor: pointer;
+}
+
+/********************************************************************************
+ * design 4
+ ********************************************************************************/
+
+.userTransform.userTransform_edit.utdesign4 {
+  border: 4px dashed rgba(255,255,255,0.7);
+  box-shadow: none;
+}
+
+.userTransform.userTransform_edit.utdesign4:hover{
+  border: 4px dashed rgba(255,255,255,1);
+  box-shadow: none;
+}
+
+.userTransform.userTransform_edit.utdesign4:active{
+  border: 4px dashed rgba(255,255,255,1);
+  box-shadow: none;
+}
+
+.userTransform.utdesign4 > .rotate {
+  right: -1.2em;
+  bottom: -1.2em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  background-color: black;
+  background-image: none;
+  border-radius: 1em;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+}
+
+.userTransform.utdesign4 > .rotate:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\48";
+}
+
+.userTransform.utdesign4 > .resize {
+  right: -1.2em;
+  bottom: -1.2em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  background-color: black;
+  background-image: none;
+  border-radius: 1em;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+}
+
+.userTransform.utdesign4 > .resize:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\e00a";
+}
+
+.userTransform.utdesign4 > .remove {
+  left: -1.2em;
+  top: -1.2em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  background-color: rgba(60,0,0,1);
+  background-image: none;
+  border-radius: 1em;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+}
+
+.userTransform.utdesign4 > .remove:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\e015";
+}
+
+/********************************************************************************
+ * design 5
+ ********************************************************************************/
+
+.userTransform.userTransform_edit.utdesign5 {
+  border: .4em dashed rgba(0,0,0,1);
+  box-shadow: none;
+}
+
+.userTransform.utdesign5 > .rotate {
+  right: -3em;
+  bottom: -3em;
+  width: 6em;
+  height: 6em;
+  line-height: 6em;
+  border-radius: 3em;
+  color: white;
+  text-align: center;
+  border: .1em solid rgb(35,31,32);
+  background: rgb(105,106,109);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY5NmE2ZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMzFmMjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(105,106,109,1) 0%, rgba(35,31,32,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(105,106,109,1)), color-stop(100%,rgba(35,31,32,1)));
+  background: -webkit-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: -o-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: linear-gradient(to bottom,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  text-shadow: 0 -0.1em 0 rgb(35,31,32);
+
+}
+.userTransform.utdesign5 > .rotate:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\48";
+  font-size: 3em;
+}
+
+.userTransform.utdesign5 > .resize {
+  right: -3em;
+  bottom: -3em;
+  width: 6em;
+  height: 6em;
+  line-height: 6em;
+  border-radius: 3em;
+  color: white;
+  text-align: center;
+  border: .1em solid rgb(35,31,32);
+  background: rgb(105,106,109);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY5NmE2ZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMzFmMjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(105,106,109,1) 0%, rgba(35,31,32,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(105,106,109,1)), color-stop(100%,rgba(35,31,32,1)));
+  background: -webkit-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: -o-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: linear-gradient(to bottom,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  text-shadow: 0 -0.1em 0 rgb(35,31,32);
+}
+.userTransform.utdesign5 > .resize:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\e00a";
+  font-size: 3em;
+}
+
+.userTransform.utdesign5 > .remove {
+  left: -3em;
+  top: -3em;
+  width: 6em;
+  height: 6em;
+  line-height: 6em;
+  border-radius: 3em;
+  color: white;
+  text-align: center;
+  border: .1em solid rgb(35,31,32);
+  background: rgb(105,106,109);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY5NmE2ZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMzFmMjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgba(105,106,109,1) 0%, rgba(35,31,32,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(105,106,109,1)), color-stop(100%,rgba(35,31,32,1)));
+  background: -webkit-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: -o-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  background: linear-gradient(to bottom,  rgba(105,106,109,1) 0%,rgba(35,31,32,1) 100%);
+  text-shadow: 0 -0.1em 0 rgb(35,31,32);
+}
+.userTransform.utdesign5 > .remove:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\e015";
+  font-size: 3em;
+}
+
+/********************************************************************************
+ * design 6
+ ********************************************************************************/
+
+.userTransform.userTransform_edit.utdesign6 {
+  border: .2em dashed rgba(0,0,0,1);
+  box-shadow: none;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.userTransform.utdesign6 > .rotate {
+  right: -3em;
+  bottom: -3em;
+  width: 6em;
+  height: 6em;
+  line-height: 5.7em;
+  background-color: #cecece;
+  background-image: none;
+  border-radius: 3em;
+  color: #4f4f4f;
+  text-align: center;
+  border: .2em solid #e0e0de;
+  padding-left: .2em;
+}
+
+.userTransform.utdesign6 > .rotate:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  font-size: 3em;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\48";
+  text-shadow: 0 .1em .1em rgba(255,255,255,0.8);
+}
+
+.userTransform.utdesign6 > .resize {
+  right: -3em;
+  bottom: -3em;
+  width: 6em;
+  height: 6em;
+  line-height: 5.7em;
+  background-color: #cecece;
+  background-image: none;
+  border-radius: 3em;
+  color: #4f4f4f;
+  text-align: center;
+  border: .2em solid #e0e0de;
+  padding-left: .2em;
+}
+
+.userTransform.utdesign6 > .resize:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  font-size: 3em;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\e00a";
+  text-shadow: 0 .1em .1em rgba(255,255,255,0.8);
+}
+
+.userTransform.utdesign6 > .remove {
+  left: -3em;
+  top: -3em;
+  right: auto;
+  bottom: auto;
+  width: 6em;
+  height: 6em;
+  line-height: 5.7em;
+  background-color: #cecece;
+  background-image: none;
+  border-radius: 3em;
+  color: #4f4f4f;
+  text-align: center;
+  border: .2em solid #e0e0de;
+}
+
+.userTransform.utdesign6 > .remove:before {
+  font-family: 'Webdoc-Icons';
+  font-style: normal;
+  font-size: 3em;
+  speak: none;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  content: "\e015";
+  text-shadow: 0 .1em .1em rgba(255,255,255,0.8);
+}
+
+/********************************************************************************
+ * design 7
+ ********************************************************************************/
+
+.userTransform.utdesign7 > .rotate {
+  right: -23px;
+  bottom: -21px;
+  width: 42px;
+  height: 39px;
+  background-image: url(../images/rotate_3.png);
+}
+
+.userTransform.utdesign7 > .remove {
+  left: auto;
+  right: -23px;
+  top: -19px;
+  width: 42px;
+  height: 39px;
+  background-image: url(../images/close_3.png);
+  cursor: pointer;
+}

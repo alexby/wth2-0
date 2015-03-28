@@ -1,0 +1,76 @@
+.crazyObjects {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  /*opacity: 0;*/
+  /*-webkit-transition: opacity 0.5s ease-in-out;*/
+  /*-moz-transition:    opacity 0.5s ease-in-out;*/
+  /*-o-transition:      opacity 0.5s ease-in-out;*/
+  /*transition:         opacity 0.5s ease-in-out;*/
+}
+
+.crazyObjects.crazyObjects_show {
+  /*opacity: 1;*/
+  /*-webkit-transition: opacity 0.2s ease-in-out;*/
+  /*-moz-transition:    opacity 0.2s ease-in-out;*/
+  /*-o-transition:      opacity 0.2s ease-in-out;*/
+  /*transition:         opacity 0.2s ease-in-out;*/
+}
+
+.crazyObjects,
+.crazyObjects > * {
+  box-sizing: border-box;
+  -o-sizing: border-box;
+  -ms-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/********************************************************************************
+ * design 4
+ ********************************************************************************/
+
+.userTransform.utdesign5:not(.crazyObjects_selected_box) > .rotate,
+.userTransform.utdesign5:not(.crazyObjects_selected_box) > .resize,
+.userTransform.utdesign5:not(.crazyObjects_selected_box) > .remove {
+  display: none;
+}
+
+.userTransform.userTransform_edit.utdesign5:not(.crazyObjects_selected_box) {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/********************************************************************************
+ * design 6
+ ********************************************************************************/
+
+.userTransform.utdesign6:not(.crazyObjects_selected_box) > .rotate,
+.userTransform.utdesign6:not(.crazyObjects_selected_box) > .resize,
+.userTransform.utdesign6:not(.crazyObjects_selected_box) > .remove {
+  display: none;
+}
+
+.userTransform.userTransform_edit.utdesign6:not(.crazyObjects_selected_box) {
+  border-color: transparent;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+/********************************************************************************
+ * design 7
+ ********************************************************************************/
+
+.userTransform.utdesign7:not(.crazyObjects_selected_box) > .rotate,
+.userTransform.utdesign7:not(.crazyObjects_selected_box) > .resize,
+.userTransform.utdesign7:not(.crazyObjects_selected_box) > .remove {
+  display: none;
+}
+
+.userTransform.userTransform_edit.utdesign7:not(.crazyObjects_selected_box) {
+  border-color: transparent;
+  box-shadow: none;
+  background-color: transparent;
+}
