@@ -1,6 +1,8 @@
 /**
  * Created by Asus on 3/27/2015.
  */
+
+
 var connector,
 	speacker,
 	translator,
@@ -114,6 +116,9 @@ var makePhoto = function() {
 
 var saveOwnPhoto = function(data) {
 	var allData = loadOwnPhotos();
+    if (JSON.stringify(localStorage).length >=  4000000) {
+        allData.splice(0,1);
+    }
 	allData.push(data);
 	localStorage.setItem('ownImages', JSON.stringify(allData));
 }

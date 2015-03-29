@@ -50,8 +50,6 @@ var core = {
     });
 
     scene.init(this.scene);
-   // player.init(this.scene);
-console.log(CURRENT_DATA);
     if(!CURRENT_DATA.url){
       tap.init(this.scene);
     } else {
