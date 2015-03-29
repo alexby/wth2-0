@@ -15,10 +15,21 @@ var connector,
 				storage.setItem(imageData.userId, JSON.stringify(imageData));
 			}
 		}
-	}(localStorage);
+	}(localStorage),
+	isSoundMessage = function(text) {
+		return (text.indexOf("sound:") === 0);
+	};
 
 var sendMessage = function(msg) {
-    connector&&connector.send(msg);
+	if ($('#translate').is(":checked") && !isSoundMessage(msg)) {
+		// need translation
+		translator.tr(msg, function(text) {
+			$('#messages').append($('<li>').text("Translated: " + " " + text));
+			connector&&connector.send(text);
+		});
+	} else {
+		connector&&connector.send(msg);
+	}
 };
 
 var app = function(){
@@ -29,7 +40,7 @@ var app = function(){
             connector = connection();
 			var img = imageStorage.getImage(connector.getUserId());
 			if (img) {
-				connector.sendImage(img.url, img.crazyObjects);
+				connector.sendImage(img.url, img.moveItCrazy);
 			}
 
 			speacker = speacking();
@@ -44,19 +55,19 @@ var app = function(){
                 $('#messages').append($('<li>').text( (msg.isMy? "I" : msg.userId) + " said: " + " " + msg.msg));
 				if (!msg.isMy) {
 					console.log(msg.msg.indexOf("sound:"));
-					if (msg.msg.indexOf("sound:") == 0) {
-						console.log(msg.msg.substr(6));
+					if (isSoundMessage(msg.msg)) {
 						speacker.playSound(msg.msg.substr(6), function(a) {
 							app.runAnalyzer(msg);
 						}
 						);
 					} else {
-						translator.tr(msg.msg, function(text) {
-							speacker.load(text, function () {
-								$('#messages').append($('<li>').text("Translated: " + " " + text));
+						var text = msg.msg;
+						//translator.tr(msg.msg, function(text) {
+							speacker.load(text, function (audio) {
+								audio.play();
 								app.runAnalyzer(msg);
 							});
-						})
+						//})
 					}
 				}
 				messagesArea.scrollTop = messagesArea.scrollHeight;

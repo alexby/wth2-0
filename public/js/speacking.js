@@ -23,7 +23,7 @@ var speacking = function() {
 		
 		playSound: function(url, onLoadCallback) {
 			audio = new Audio(url);
-			audio.autoplay = true;
+			audio.autoplay = false;
 			document.body.appendChild(audio);
 
 			audio.addEventListener('canplaythrough', function() {
