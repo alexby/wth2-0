@@ -18,17 +18,21 @@ var speacking = function() {
         },
         load: function(text, onLoadCallback) {
             var request = apiAddress + "text=" + text + "&format=mp3&lang=ru%E2%80%91RU&speaker=zahar&key=" + yandexApiKey;
-            audio = new Audio(request);
-            audio.autoplay = true;
-            document.body.appendChild(audio);
-
-            audio.addEventListener('canplaythrough', function() {
-                var source = context.createMediaElementSource(audio);
-                source.connect(analyser);
-                analyser.connect(context.destination);
-                onLoadCallback && onLoadCallback(audio);
-            }, false);
+			this.playSound(request, onLoadCallback);
         },
+		
+		playSound: function(url, onLoadCallback) {
+			audio = new Audio(url);
+			audio.autoplay = true;
+			document.body.appendChild(audio);
+
+			audio.addEventListener('canplaythrough', function() {
+				var source = context.createMediaElementSource(audio);
+				source.connect(analyser);
+				analyser.connect(context.destination);
+				onLoadCallback && onLoadCallback(audio);
+			}, false);	
+		},
 
         getAnalyzer: function() {
             return analyser;
