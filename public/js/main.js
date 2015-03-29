@@ -63,10 +63,7 @@ var app = function(){
 				imageStorage.saveImage(imageData);
 			});
 			
-			var images = loadOwnPhotos();
-			for (var i in images) {
-				$("#own_images").append("<img src=\"" + images[i].url + "\" width=\"100\" height=\"100\" onclick=\"setSavedImage(" + i + ")\"/>");
-			}
+			appendOwnImages();
 	    },
 		initTranslation: function () {
 			translator = translating();
@@ -126,4 +123,13 @@ var loadOwnPhotos = function() {
 		return [];
 	}
 	return JSON.parse(res);
+}
+
+var appendOwnImages = function() {
+	$("#own_images").html("");
+	var images = loadOwnPhotos();
+	for (var i in images) {
+		$("#own_images").append("<img src=\"" + images[i].url + "\" width=\"100\" height=\"100\" onclick=\"setSavedImage(" + i + ")\"/>");
+		console.log(images[i]);
+	}	
 }
