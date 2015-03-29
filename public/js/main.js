@@ -1,6 +1,8 @@
 /**
  * Created by Asus on 3/27/2015.
  */
+
+
 var connector,
 	speacker,
 	translator,
@@ -64,7 +66,6 @@ var app = function(){
 			var images = loadOwnPhotos();
 			for (var i in images) {
 				$("#own_images").append("<img src=\"" + images[i].url + "\" width=\"100\" height=\"100\" onclick=\"setSavedImage(" + i + ")\"/>");
-				console.log(images[i]);
 			}
 	    },
 		initTranslation: function () {
@@ -112,6 +113,9 @@ var makePhoto = function() {
 
 var saveOwnPhoto = function(data) {
 	var allData = loadOwnPhotos();
+    if (JSON.stringify(localStorage).length >=  4000000) {
+        allData.splice(0,1);
+    }
 	allData.push(data);
 	localStorage.setItem('ownImages', JSON.stringify(allData));
 }
