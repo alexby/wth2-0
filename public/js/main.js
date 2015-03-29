@@ -56,7 +56,6 @@ var app = function(){
 				if (!msg.isMy) {
 					console.log(msg.msg.indexOf("sound:"));
 					if (isSoundMessage(msg.msg)) {
-						console.log(msg.msg.substr(6));
 						speacker.playSound(msg.msg.substr(6), function(a) {
 							app.runAnalyzer(msg);
 						}
@@ -64,7 +63,8 @@ var app = function(){
 					} else {
 						var text = msg.msg;
 						//translator.tr(msg.msg, function(text) {
-							speacker.load(text, function () {
+							speacker.load(text, function (audio) {
+								audio.play();
 								app.runAnalyzer(msg);
 							});
 						//})
