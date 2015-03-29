@@ -18,7 +18,15 @@ var connector,
 	}(localStorage);
 
 var sendMessage = function(msg) {
-    connector&&connector.send(msg);
+	if ($('#translate').is(":checked")) {
+		// need translation
+		translator.tr(msg, function(text) {
+			$('#messages').append($('<li>').text("Translated: " + " " + text));
+			connector&&connector.send(text);
+		});
+	} else {
+		connector&&connector.send(msg);
+	}
 };
 
 var app = function(){
@@ -29,7 +37,7 @@ var app = function(){
             connector = connection();
 			var img = imageStorage.getImage(connector.getUserId());
 			if (img) {
-				connector.sendImage(img.url, img.crazyObjects);
+				connector.sendImage(img.url, img.moveItCrazy);
 			}
 
 			speacker = speacking();
@@ -51,12 +59,12 @@ var app = function(){
 						}
 						);
 					} else {
-						translator.tr(msg.msg, function(text) {
+						var text = msg.msg;
+						//translator.tr(msg.msg, function(text) {
 							speacker.load(text, function () {
-								$('#messages').append($('<li>').text("Translated: " + " " + text));
 								app.runAnalyzer(msg);
 							});
-						})
+						//})
 					}
 				}
 				messagesArea.scrollTop = messagesArea.scrollHeight;
