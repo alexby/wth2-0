@@ -62,6 +62,7 @@ var app = function(){
 			});
 			
 			appendOwnImages();
+			appendPredefinedImages();
 	    },
 		initTranslation: function () {
 			translator = translating();
@@ -87,6 +88,11 @@ var setSavedImage = function(num) {
 	var allPh = loadOwnPhotos(); 
 	tap.hide();
 	setImage(true, allPh[num].url, JSON.stringify(allPh[num].moveItCrazyParameters));
+}
+
+var setPredefinedImage = function(num) {
+	tap.hide();
+	setImage(true, PREDEFINED[num].url, JSON.stringify(PREDEFINED[num].moveItCrazyParameters));
 }
 
 var sendImage = function(moveItCrazy, url){
@@ -125,6 +131,16 @@ var appendOwnImages = function() {
 	var images = loadOwnPhotos();
 	for (var i in images) {
 		$("#own_images").append("<img src=\"" + images[i].url + "\" width=\"100\" height=\"100\" onclick=\"setSavedImage(" + i + ")\"/>");
+		console.log(images[i]);
+	}	
+}
+
+var appendPredefinedImages = function() {
+	$("#predefined_images").html("");
+	console.log(PREDEFINED);
+	var images = PREDEFINED;
+	for (var i in images) {
+		$("#own_images").append("<img src=\"" + images[i].url + "\" width=\"100\" height=\"100\" onclick=\"setPredefinedImage(" + i + ")\"/>");
 		console.log(images[i]);
 	}	
 }
