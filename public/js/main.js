@@ -15,10 +15,13 @@ var connector,
 				storage.setItem(imageData.userId, JSON.stringify(imageData));
 			}
 		}
-	}(localStorage);
+	}(localStorage),
+	isSoundMessage = function(text) {
+		return (text.indexOf("sound:") === 0);
+	};
 
 var sendMessage = function(msg) {
-	if ($('#translate').is(":checked")) {
+	if ($('#translate').is(":checked") && !isSoundMessage(msg)) {
 		// need translation
 		translator.tr(msg, function(text) {
 			$('#messages').append($('<li>').text("Translated: " + " " + text));
@@ -52,7 +55,7 @@ var app = function(){
                 $('#messages').append($('<li>').text( (msg.isMy? "I" : msg.userId) + " said: " + " " + msg.msg));
 				if (!msg.isMy) {
 					console.log(msg.msg.indexOf("sound:"));
-					if (msg.msg.indexOf("sound:") == 0) {
+					if (isSoundMessage(msg.msg)) {
 						console.log(msg.msg.substr(6));
 						speacker.playSound(msg.msg.substr(6), function(a) {
 							app.runAnalyzer(msg);
