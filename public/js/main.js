@@ -57,6 +57,7 @@ var app = function(){
 					console.log(msg.msg.indexOf("sound:"));
 					if (isSoundMessage(msg.msg)) {
 						speacker.playSound(msg.msg.substr(6), function(a) {
+							a.play();
 							app.runAnalyzer(msg);
 						}
 						);
